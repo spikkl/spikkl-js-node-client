@@ -1,0 +1,97 @@
+{
+  "name": "@spikkl/spikkl-js-node-client",
+  "version": "1.0.0",
+  "license": "BSD-3-Clause",
+  "description": "Spikkl API client library for NodeJS",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/spikkl/spikkl-js-node-client"
+  },
+  "keywords": [
+    "spikkl",
+    "postal code",
+    "api",
+    "service"
+  ],
+  "main": "dist/spikkl.cjs.js",
+  "module": "dist/spikkl.esm.js",
+  "types": "dist/types/src/types.d.ts",
+  "engines": {
+    "node": ">=6.14"
+  },
+  "scripts": {
+    "prepublish": "yarn build",
+    "commit": "git-cz",
+    "prepush": "yarn test",
+    "test": "jest",
+    "test:watch": "jest --watch",
+    "test:cov": "jest --coverage",
+    "test:unit:cov": "jest ./tests/unit --coverage",
+    "build": "yarn build:library && yarn build:declarations",
+    "build:library": "rollup --config rollup.config.js",
+    "build:declarations": "tsc src/types.ts --declaration --declarationDir dist/types --emitDeclarationOnly --allowSyntheticDefaultImports --resolveJsonModule",
+    "lint:prettier": "prettier --write \"{src,tests}/**/*.{js,ts}\"",
+    "lint:eslint": "eslint --ext .ts,.js src/",
+    "lint:eslint:fix": "eslint --ext .js,.ts --fix src/",
+    "lint": "yarn lint:eslint:fix && yarn lint:prettier"
+  },
+  "dependencies": {
+    "@typescript-eslint/eslint-plugin": "^2.19.2",
+    "@typescript-eslint/parser": "^2.19.2",
+    "axios": "^0.19.2",
+    "lodash": "^4.17.15",
+    "qs": "^6.9.1"
+  },
+  "devDependencies": {
+    "@babel/plugin-proposal-class-properties": "^7.8.3",
+    "@babel/preset-env": "^7.8.4",
+    "@babel/preset-typescript": "^7.8.3",
+    "@types/jest": "^24.0.16",
+    "@types/lodash": "^4.14.149",
+    "@types/node": "^13.7.1",
+    "@types/qs": "^6.9.1",
+    "axios-mock-adapter": "^1.17.0",
+    "babel-jest": "^25.1.0",
+    "dotenv": "^8.2.0",
+    "eslint": "^6.8.0",
+    "eslint-config-prettier": "^6.10.0",
+    "eslint-plugin-prettier": "^3.1.2",
+    "eslint-plugin-import": "^2.20.1",
+    "eslint-plugin-no-only-tests": "^2.4.0",
+    "jest": "^24.8.0",
+    "jest-mock-axios": "^3.2.0",
+    "prettier": "^1.18.2",
+    "rollup": "^1.18.0",
+    "rollup-plugin-babel": "^4.3.3",
+    "rollup-plugin-json": "^4.0.0",
+    "rollup-plugin-node-resolve": "^5.2.0",
+    "typescript": "^3.5.3"
+  },
+  "jest": {
+    "moduleDirectories": [
+      "node_modules",
+      "dist",
+      "src"
+    ],
+    "moduleFileExtensions": [
+      "ts",
+      "js"
+    ],
+    "transform": {
+      "^.+\\.(js|jsx|ts|tsx)$": "babel-jest"
+    },
+    "testMatch": [
+      "<rootDir>/tests/**/*.test.ts"
+    ]
+  },
+  "files": [
+    "dist/**/*"
+  ],
+  "resolutions": {
+    "@babel/core": "^7.3.3",
+    "babel-core": "7.0.0-bridge.0"
+  },
+  "publishConfig": {
+    "access": "public"
+  }
+}

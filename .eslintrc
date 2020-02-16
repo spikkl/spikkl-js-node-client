@@ -1,0 +1,38 @@
+{
+  "plugins": [
+    "import",
+    "no-only-tests"
+  ],
+  "extends": [
+    "prettier/@typescript-eslint",
+    "plugin:prettier/recommended",
+    "plugin:@typescript-eslint/recommended"
+  ],
+  "parser": "@typescript-eslint/parser",
+  "rules": {
+    "import/default": "error",
+    "import/named": "error",
+    "import/namespace": "error",
+    "import/no-extraneous-dependencies": "error",
+    "no-unused-vars": "error",
+    "no-console": "warn",
+    "default-case": "off",
+    "no-only-tests/no-only-tests": "error",
+    "no-underscore-dangle": "off",
+    "import/prefer-default-export": "off",
+    "@typescript-eslint/camelcase": "off",
+    "@typescript-eslint/no-explicit-any": "off",
+    "@typescript-eslint/interface-name-prefix": "off"
+  },
+  "settings": {
+    "import/resolver": {
+      "node": {
+        "paths": [ "src", "tests", "examples" ],
+        "extensions": [ ".js", ".ts" ]
+      }
+    }
+  },
+  "env": {
+    "node": true
+  }
+}
