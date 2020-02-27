@@ -12,8 +12,8 @@ Spikkl API client requires Node 6.14.x or higher to be installed.
 ## Requirements ##
 To use the Spikkl API client, the following things are required:
 + Get yourself a free [Spikkl account](https://www.spikkl.nl/signup). No sign up costs.
-+ Follow [a few steps](https://www.spikkl.nl/billing) to enable a suitable subscription to talk to the API.
-+ A valid API key which can be generated from your [Spikkl dashboard](https://www.spikkl.nl/credentials).
++ Follow [a few steps](https://www.spikkl.nl/account/billing) to enable a suitable subscription to talk to the API.
++ A valid API key which can be generated from your [Spikkl dashboard](https://www.spikkl.nl/account/credentials).
 
 ## Installation ##
 Using [npm](https://npmjs.org/):
