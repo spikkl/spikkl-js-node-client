@@ -46,16 +46,23 @@ export interface ResourceResponse<res> extends AxiosResponse {
 }
 
 /**
+ * ResourceList interface
+ */
+export interface ResourceList<req, res> {
+    (countryCode: string, request: req): Promise<ResourceResponse<res>>;
+}
+
+/**
  * List the location resources with the given query parameters.
  *
  * @param {ResourceOptions} options
  *
  * @return {ResourceResponse}
  */
-export const list = <req extends ResourceRequest, res extends ResourceResponseData>(options: ResourceOptions) => {
+export const list = <req extends ResourceRequest, res extends ResourceResponseData>(options: ResourceOptions): ResourceList<req, res> => {
     const { client, resource, format } = options;
 
-    return (countryCode: string, request: req) => {
+    return (countryCode: string, request: req): Promise<ResourceResponse<res>> => {
         return client
             .get(`geo/${countryCode}/${resource}.${format}${qs.stringify(request.query, { addQueryPrefix: true })}`)
             .then((response: ResourceResponse<res>) => {

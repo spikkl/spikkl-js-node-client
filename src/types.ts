@@ -1,4 +1,5 @@
 import createSpikklClient from './createSpikklClient';
+import { LookupLocationOptions, ReverseLookupLocationOptions } from './resources/locations';
 
 export default createSpikklClient;
 
@@ -32,6 +33,14 @@ export interface StringMap {
  */
 export interface OptionalStringMap {
     [key: string]: string | undefined;
+}
+
+/**
+ * ClientInstance interface
+ */
+export interface ClientInstance {
+    lookup: (lookupOptions: LookupLocationOptions) => Promise<Location[]>;
+    reverse: (lookupOptions: ReverseLookupLocationOptions) => Promise<Location[]>;
 }
 
 /**

@@ -7,7 +7,7 @@ import { list, ResourceResponse, ResourceResponseData } from '../resource';
  */
 export interface LookupLocationOptions {
     postalCode: string;
-    streetNumber?: string;
+    streetNumber?: string | number;
     streetNumberSuffix?: string;
 }
 
@@ -15,8 +15,8 @@ export interface LookupLocationOptions {
  * ReverseLookupLocationOptions interface
  */
 export interface ReverseLookupLocationOptions {
-    longitude: string;
-    latitude: string;
+    longitude: string | number;
+    latitude: string | number;
 }
 
 /**

@@ -4,7 +4,7 @@ import { cloneDeep } from 'lodash';
 
 // Lib
 import { version as sdkVersion } from '../package.json';
-import { Authenticable, Filterable, StringMap, Location } from './types';
+import { Authenticable, ClientInstance, Filterable, StringMap, Location } from './types';
 import { appendApiKey, appendFilter, toStringMap } from './util';
 
 // Resources
@@ -12,7 +12,7 @@ import { ResourceRequest } from './resource';
 import { create as createLocationResource, LookupLocationOptions, ReverseLookupLocationOptions } from './resources/locations';
 import { ZeroResultsError } from './errors';
 
-export interface SpikklOptions extends AxiosRequestConfig, Authenticable, Filterable { }
+export interface SpikklOptions extends AxiosRequestConfig, Authenticable, Filterable {}
 
 function createHttpClient(options: SpikklOptions): AxiosInstance {
     const axiosOptions: SpikklOptions = cloneDeep(options);
@@ -28,17 +28,14 @@ function createHttpClient(options: SpikklOptions): AxiosInstance {
     axiosOptions.headers['Accept-Encoding'] = 'gzip';
     axiosOptions.headers['Accept'] = 'application/json';
     axiosOptions.headers['Content-Type'] = 'application/json';
-    axiosOptions.headers['User-Agent'] = [
-        `Node/${process.version}`,
-        `Spikkl/${sdkVersion}`
-    ].join(' ');
+    axiosOptions.headers['User-Agent'] = [`Node/${process.version}`, `Spikkl/${sdkVersion}`].join(';');
 
     axiosOptions.httpsAgent = new https.Agent({});
 
     return axios.create(axiosOptions);
 }
 
-export const createSpikklClient = (options: SpikklOptions) => {
+export default function createSpikklClient(options: SpikklOptions): ClientInstance {
     if (!options.apiKey) {
         throw new TypeError('Missing parameters "apiKey"');
     }
@@ -52,7 +49,7 @@ export const createSpikklClient = (options: SpikklOptions) => {
         lookup: (lookupOptions: LookupLocationOptions): Promise<Location[]> => {
             const query: StringMap = toStringMap({
                 postal_code: lookupOptions.postalCode,
-                street_number: lookupOptions.streetNumber,
+                street_number: lookupOptions.streetNumber.toString(),
                 street_number_suffix: lookupOptions.streetNumberSuffix,
             });
 
@@ -75,8 +72,8 @@ export const createSpikklClient = (options: SpikklOptions) => {
 
         reverse: (lookupOptions: ReverseLookupLocationOptions): Promise<Location[]> => {
             const query: StringMap = toStringMap({
-                longitude: lookupOptions.longitude,
-                latitude: lookupOptions.latitude,
+                longitude: lookupOptions.longitude.toString(),
+                latitude: lookupOptions.latitude.toString(),
             });
 
             appendApiKey({ query, options });
@@ -99,5 +96,4 @@ export const createSpikklClient = (options: SpikklOptions) => {
 };
 
 export { createHttpClient };
-
-export default createSpikklClient;
+export { createSpikklClient };

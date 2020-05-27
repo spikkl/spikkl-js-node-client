@@ -1,0 +1,6 @@
+{
+  "private": true,
+  "dependencies": {
+    "@spikkl/spikkl-js-node-client": "../"
+  }
+}
