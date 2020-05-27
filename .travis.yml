@@ -31,8 +31,8 @@ script:
 deploy:
     edge: true
     provider: npm
-    api_key:
-        secure: $NPM_TOKEN
+    api_token:
+        secure: mzFiQ2c7kRnVSGwbe/rLGvzvXIEVHufYItmcT2TwaKId2dd89/Yeby8QeJoenfvcJmtzCSGCxAmbvQx2xt8YEC53CFEuwXYuS8ZGiV1do5o5omY7eB3Tqx9g+Y0bvbvzjFggW8MVb8LixI5b3KmUPhRhCEf37CsA+bsCxOhKGFsn4uQypP6bejl03H4r6LNgJ9is2/0GYLYtqqqRDEJ0MI28xvgy3wXyG5wzDmfD5VWk9ORVpwYBFHYLj2OUfJieUlAw/8LD+FtlhOq+uxK9mFy5LlO9ayOVuIBn5WYRAVQtZGdUQSiinvvbpAZTyD49HWomUvNOj/4vYbbGIrUM2IZ01Iin3NzeNOdPhVQiR79ENqguz2mA6r6bEPv9LcdVQtOp7dRm6oSKAfN3rW6aI3F00yiIV6f0/FsaN/p+VBnD9aqA6YRriXT9uuB2vmlY3QuP6xjsoiBlOeJLss6+HF1OMNQWQHwwpJEynkKkNOAadrwvk+W3eLm3OXoDkkaPF0V3jCIFPUOj5hh31FmDNKPooBrHYoD7Imp6yBbpWocCffpyUrqwvyLzh4GcSyMqcM3m2AkmCpY+tohfAchSE2QXIR3GpC1mJWsI6VfwJuaP55j0Orvs5qkx4olVt9wZfTKIfE2pri7wK4SSRsWdRfMOJWFDY5DHvP4XJkBv2rU=
     email: "support@spikkl.nl"
     skip_cleanup: true
     on:
