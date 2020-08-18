@@ -28,7 +28,7 @@ yarn add @spikkl/spikkl-js-node-client
 
 This will add `@spikkl/spikkl-js-node-client` to your project's dependencies.
 
-You may also git checkout or [download all the files](https://github.com/spiCheck the [releases](https://github.com/mollie/mollie-api-node/releases) page to know which versions are available.kkl/spikkl-js-node-client/archive/master.zip), and include the Spikkl API client manually.
+You may also git checkout or [download all the files](https://github.com/spikkl/spikkl-js-node-client/archive/master.zip), and include the Spikkl API client manually.
 
 Check the [releases](https://github.com/spikkl/spikkl-js-node-client/releases) page to know which versions are available.
 
